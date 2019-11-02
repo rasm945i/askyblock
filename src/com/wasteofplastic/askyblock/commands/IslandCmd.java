@@ -1047,9 +1047,11 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
         // The target player's UUID
         UUID targetPlayer = null;
 
-        for(String subcmd : subCommands.keySet()) {
-            if(subcmd.equalsIgnoreCase(split[0])) {
-                return subCommands.get(subcmd).onCommand(sender, split);
+        if(split.length > 0) {
+            for (String subcmd : subCommands.keySet()) {
+                if (subcmd.equalsIgnoreCase(split[0])) {
+                    return subCommands.get(subcmd).onCommand(sender, split);
+                }
             }
         }
 
