@@ -1322,33 +1322,6 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
                 }
             }
 
-            if (split[0].equalsIgnoreCase("minishop") || split[0].equalsIgnoreCase("ms")) {
-                if (Settings.useEconomy && Settings.useMinishop) {
-                    // Check island
-                    if (plugin.getGrid().getIsland(player.getUniqueId()) == null) {
-                        Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).errorNoIsland);
-                        return true;
-                    }
-                    if (player.getWorld().equals(ASkyBlock.getIslandWorld()) || player.getWorld().equals(ASkyBlock.getNetherWorld())) {
-                        if (VaultHelper.checkPerm(player, Settings.PERMPREFIX + "island.minishop")) {
-                            if (ControlPanel.miniShop != null) {
-                                player.openInventory(ControlPanel.miniShop);
-                            } else {
-                                Util.sendMessage(player, plugin.myLocale(playerUUID).errorCommandNotReady);
-                                plugin.getLogger().severe("Player tried to open the minishop, but it does not exist. Look for errors in the console about the minishop loading.");
-                            }
-                            return true;
-                        }
-                    } else {
-                        Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).errorWrongWorld);
-                        return true;
-                    }
-                }
-                else{
-                    Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).errorMinishopDisabled);
-                    return true;
-                }
-            }
             // /island <command>
             if (split[0].equalsIgnoreCase("warp")) {
                 if (VaultHelper.checkPerm(player, Settings.PERMPREFIX + "island.warp")) {
@@ -1656,37 +1629,6 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
                     } else {
                         Util.sendMessage(player, plugin.myLocale(playerUUID).helpColor + plugin.myLocale(playerUUID).coopUseExpel);
                     }
-                    return true;
-                }
-            } else if (split[0].equalsIgnoreCase("biomes")) {
-                if (VaultHelper.checkPerm(player, Settings.PERMPREFIX + "island.biomes")) {
-                    // Only the team leader can do this
-                    if (teamLeader != null && !teamLeader.equals(playerUUID)) {
-                        Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).levelerrornotYourIsland);
-                        return true;
-                    }
-                    if (!plugin.getPlayers().hasIsland(playerUUID)) {
-                        // Player has no island
-                        Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).errorNoIsland);
-                        return true;
-                    }
-                    if (!plugin.getGrid().playerIsOnIsland(player)) {
-                        Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).challengeserrorNotOnIsland);
-                        return true;
-                    }
-                    // Not allowed in the nether
-                    if (plugin.getPlayers().getIslandLocation(playerUUID).getWorld().getEnvironment().equals(Environment.NETHER)) {
-                        Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).errorWrongWorld);
-                        return true;
-                    }
-                    // Util.sendMessage(player, plugin.myLocale(player.getUniqueId()).helpColor + "[Biomes]");
-                    Inventory inv = plugin.getBiomes().getBiomePanel(player);
-                    if (inv != null) {
-                        player.openInventory(inv);
-                    }
-                    return true;
-                } else {
-                    Util.sendMessage(player, ChatColor.RED + plugin.myLocale(player.getUniqueId()).errorNoPermission);
                     return true;
                 }
             } else if (split[0].equalsIgnoreCase("spawn") && plugin.getGrid().getSpawn() != null) {
