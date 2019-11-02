@@ -122,6 +122,8 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
     private List<UUID> leavingPlayers = new ArrayList<>();
     private boolean creatingTopTen;
 
+    private HashMap<String, IslandSubCommand> subCommands = new HashMap<>();
+
     /**
      * Constructor
      *
@@ -497,6 +499,10 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
         plugin.getLogger().warning("* 'schematics' section in config.yml has been deprecated.     *");
         plugin.getLogger().warning("* See 'schematicsection' in config.new.yml for replacement.   *");
         plugin.getLogger().warning("***************************************************************");
+    }
+
+    public void addSubcommand(String cmd, IslandSubCommand iscmd) {
+        subCommands.put(cmd.toLowerCase(), iscmd);
     }
 
     /**
@@ -1040,6 +1046,13 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
         }
         // The target player's UUID
         UUID targetPlayer = null;
+
+        for(String subcmd : subCommands.keySet()) {
+            if(subcmd.equalsIgnoreCase(split[0])) {
+                return subCommands.get(subcmd).onCommand(sender, split);
+            }
+        }
+
         // Check if a player has an island or is in a team
         switch (split.length) {
         // /island command by itself
