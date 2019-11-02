@@ -1299,21 +1299,6 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
                     return true;
                 } else if (split[0].equalsIgnoreCase("about")) {
                     Util.sendMessage(player, ChatColor.GOLD + "About " + ChatColor.GREEN + plugin.getDescription().getName() + ChatColor.GOLD + " v" + ChatColor.AQUA + plugin.getDescription().getVersion() + ChatColor.GOLD + ":");
-                    Util.sendMessage(player, ChatColor.GOLD + "This plugin is free software: you can redistribute");
-                    Util.sendMessage(player, ChatColor.GOLD + "it and/or modify it under the terms of the GNU");
-                    Util.sendMessage(player, ChatColor.GOLD + "General Public License as published by the Free");
-                    Util.sendMessage(player, ChatColor.GOLD + "Software Foundation, either version 3 of the License,");
-                    Util.sendMessage(player, ChatColor.GOLD + "or (at your option) any later version.");
-                    Util.sendMessage(player, ChatColor.GOLD + "This plugin is distributed in the hope that it");
-                    Util.sendMessage(player, ChatColor.GOLD + "will be useful, but WITHOUT ANY WARRANTY; without");
-                    Util.sendMessage(player, ChatColor.GOLD + "even the implied warranty of MERCHANTABILITY or");
-                    Util.sendMessage(player, ChatColor.GOLD + "FITNESS FOR A PARTICULAR PURPOSE. See the");
-                    Util.sendMessage(player, ChatColor.GOLD + "GNU General Public License for more details.");
-                    Util.sendMessage(player, ChatColor.GOLD + "You should have received a copy of the GNU");
-                    Util.sendMessage(player, ChatColor.GOLD + "General Public License along with this plugin.");
-                    Util.sendMessage(player, ChatColor.GOLD + "If not, see <http://www.gnu.org/licenses/>.");
-                    Util.sendMessage(player, ChatColor.GOLD + "Source code is available on GitHub.");
-                    Util.sendMessage(player, ChatColor.GOLD + "(c) 2014 - 2018 by tastybento, Poslovitch");
                     return true;
                     // Spawn enderman
                     // Enderman enderman = (Enderman)
