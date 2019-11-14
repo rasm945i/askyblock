@@ -4,6 +4,8 @@ import org.bukkit.command.CommandSender;
 
 public interface IslandSubCommand {
 
+    String getPermission();
+
     boolean onCommand(CommandSender sender, String[] split);
 
 }
