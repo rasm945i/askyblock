@@ -33,6 +33,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.UUID;
 
+import com.wasteofplastic.askyblock.*;
 import com.wasteofplastic.askyblock.events.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
@@ -66,16 +67,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
-import com.wasteofplastic.askyblock.ASLocale;
-import com.wasteofplastic.askyblock.ASkyBlock;
-import com.wasteofplastic.askyblock.CoopPlay;
-import com.wasteofplastic.askyblock.DeleteIslandChunk;
-import com.wasteofplastic.askyblock.GridManager;
-import com.wasteofplastic.askyblock.Island;
 import com.wasteofplastic.askyblock.Island.SettingsFlag;
-import com.wasteofplastic.askyblock.LevelCalcByChunk;
-import com.wasteofplastic.askyblock.Settings;
-import com.wasteofplastic.askyblock.TopTen;
 import com.wasteofplastic.askyblock.Island.SettingsFlag;
 import com.wasteofplastic.askyblock.events.IslandJoinEvent;
 import com.wasteofplastic.askyblock.events.IslandLeaveEvent;
@@ -1616,6 +1608,13 @@ public class IslandCmd implements CommandExecutor, TabCompleter {
                 }
                 if (VaultHelper.checkPerm(player, Settings.PERMPREFIX + "island.lang")) {
                     Util.sendMessage(player, plugin.myLocale(player.getUniqueId()).helpColor + "/" + label + " lang <#>: "+ ChatColor.WHITE + plugin.myLocale(player.getUniqueId()).islandHelpSelectLanguage);
+                }
+
+                for(String cmd : subCommands.keySet()) {
+                    IslandSubCommand subcmd = subCommands.get(cmd);
+                    if(VaultHelper.checkPerm(player, subcmd.getPermission())) {
+                        Util.sendMessage(player, plugin.myLocale(player.getUniqueId()).helpColor + subcmd.getDescription());
+                    }
                 }
                 // DEBUG - used to find meta tags
                 /*
