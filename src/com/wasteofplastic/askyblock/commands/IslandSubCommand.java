@@ -6,6 +6,8 @@ public interface IslandSubCommand {
 
     String getPermission();
 
+    String getDescription();
+
     boolean onCommand(CommandSender sender, String[] split);
 
 }
