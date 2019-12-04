@@ -300,7 +300,7 @@ public class ASkyBlock extends JavaPlugin {
             getLogger().severe("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
             if (Settings.GAMETYPE.equals(Settings.GameType.ASKYBLOCK)) {
                 getCommand("island").setExecutor(new NotSetup(Reason.DISTANCE));
-                getCommand("asc").setExecutor(new NotSetup(Reason.DISTANCE));
+//                getCommand("asc").setExecutor(new NotSetup(Reason.DISTANCE));
                 getCommand("asadmin").setExecutor(new NotSetup(Reason.DISTANCE));
             } else {
                 getCommand("ai").setExecutor(new NotSetup(Reason.DISTANCE));
@@ -314,7 +314,7 @@ public class ASkyBlock extends JavaPlugin {
             // Currently, the only setup error is where the world_name does not match
             if (Settings.GAMETYPE.equals(Settings.GameType.ASKYBLOCK)) {
                 getCommand("island").setExecutor(new NotSetup(Reason.WORLD_NAME));
-                getCommand("asc").setExecutor(new NotSetup(Reason.WORLD_NAME));
+//                getCommand("asc").setExecutor(new NotSetup(Reason.WORLD_NAME));
                 getCommand("asadmin").setExecutor(new NotSetup(Reason.WORLD_NAME));
             } else {
                 getCommand("ai").setExecutor(new NotSetup(Reason.WORLD_NAME));
@@ -362,8 +362,9 @@ public class ASkyBlock extends JavaPlugin {
             getCommand("island").setExecutor(islandCmd);
             getCommand("island").setTabCompleter(islandCmd);
 
-            getCommand("asc").setExecutor(getChallenges());
-            getCommand("asc").setTabCompleter(getChallenges());
+            // Bendix Edit: Dont use aSkyBlock challenges
+//            getCommand("asc").setExecutor(getChallenges());
+//            getCommand("asc").setTabCompleter(getChallenges());
 
             getCommand("asadmin").setExecutor(adminCmd);
             getCommand("asadmin").setTabCompleter(adminCmd);
@@ -412,7 +413,7 @@ public class ASkyBlock extends JavaPlugin {
                     getLogger().severe("    generator: " + ASkyBlock.this.getName());
                     if (Settings.GAMETYPE.equals(Settings.GameType.ASKYBLOCK)) {
                         getCommand("island").setExecutor(new NotSetup(Reason.GENERATOR));
-                        getCommand("asc").setExecutor(new NotSetup(Reason.GENERATOR));
+//                        getCommand("asc").setExecutor(new NotSetup(Reason.GENERATOR));
                         getCommand("asadmin").setExecutor(new NotSetup(Reason.GENERATOR));
                     } else {
                         getCommand("ai").setExecutor(new NotSetup(Reason.GENERATOR));

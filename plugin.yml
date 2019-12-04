@@ -16,11 +16,6 @@ commands:
         description: Admin commands
         usage:  |
             /asadmin
-    asc:
-        description: Game challenges
-        aliases: [c, challenge, aschallenge, challenges]
-        usage:  |  
-            /challenge
 permissions:    
   askyblock.*:
     default: false
